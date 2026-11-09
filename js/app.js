@@ -1,27 +1,24 @@
-//para concatenar usamos crase `
-//para puxar variáveis na concatenação colocamos ${}
+// Alterna um jogo entre "alugado" e "disponível" a partir do id do card
+function alterarStatus(id) {
+    let gameClick = document.getElementById(`game-${id}`);              // card do jogo clicado
+    let imagem = gameClick.querySelector('.dashboard__item__img');       // capa do jogo
+    let botao = gameClick.querySelector('.dashboard__item__button');     // botão Alugar/Devolver
 
-
-function alterarStatus (id) {                                               //para acrescentar a função com o ID
-    let gameClick = document.getElementById(`game-${id}`);                  //let cria variável e puxar ID sempre pega o doc+ getId
-    let imagem = gameClick.querySelector ('.dashboard__item__img') ;       //o queryekector filta o game clicado quando junto da variável game
-    let botao = gameClick.querySelector ('.dashboard__item__button');
-   // let nomeJ = gameClick.querySelector ('.dashboard__item__name');
-  // alert (nomeJ.textContent);                                            // isso faz com que abra uma janela para sabermos se estamos fazendo certo
-
-
-}
-if (imagem.classList.contains('dashboard__item__img--rented')) {
-    imagem.classList.remove('dashboard__item__img--rented');
-    botao.classList.remove('dashboard__item__button--return');
-    botao.textContent = 'Alugar';
-} else {
-    imagem.classList.add('dashboard__item__img--rented');
-    botao.classList.add('dashboard__item__button--return');
-    botao.textContent = 'Devolver';
+    if (imagem.classList.contains('dashboard__item__img--rented')) {
+        // estava alugado: devolve
+        imagem.classList.remove('dashboard__item__img--rented');
+        botao.classList.remove('dashboard__item__button--return');
+        botao.textContent = 'Alugar';
+    } else {
+        // estava disponível: aluga
+        imagem.classList.add('dashboard__item__img--rented');
+        botao.classList.add('dashboard__item__button--return');
+        botao.textContent = 'Devolver';
+    }
 }
 
-//se eu puxar a classList puxa os elementos do HTML, o contains é para saber se contem uma classe em especifico
-//para remover a classe
-//text.Content serve para mudar a escrita
-//add para adicionar a classe
+// Anotações de estudo:
+// - template string com crase permite usar variáveis com ${}
+// - classList.contains verifica se o elemento tem uma classe
+// - classList.add / remove liga e desliga o estilo de "alugado"
+// - textContent troca o texto do botão
